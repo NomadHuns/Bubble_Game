@@ -1,6 +1,8 @@
 package org.example;
 
 import javax.swing.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class BubbleFrame extends JFrame {
     private JLabel backgroundMap;
@@ -9,6 +11,7 @@ public class BubbleFrame extends JFrame {
     public BubbleFrame () {
         initSetting();
         initObject();
+        initListener();
         setVisible(true);
     }
 
@@ -26,5 +29,23 @@ public class BubbleFrame extends JFrame {
         setLocationRelativeTo(null); //JFrame 가운데 배치하기
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+    }
+    private void initListener() {
+        addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                switch (e.getKeyCode()) {
+                    case KeyEvent.VK_LEFT:
+                        player.left();
+                        break;
+                    case KeyEvent.VK_RIGHT:
+                        player.right();
+                        break;
+                    case KeyEvent.VK_UP:
+                        player.up();
+                        break;
+                }
+            }
+        });
     }
 }

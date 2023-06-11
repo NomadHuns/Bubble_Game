@@ -4,25 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="64ac1bab-d835-485f-a65f-75e4072c7a66" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/BubbleFrame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/ImageLoader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Player.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/image/backgroundMap.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/image/backgroundMapService.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/image/bomb.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/image/bubble.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/image/bubbled.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/image/enemyL.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/image/enemyR.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/image/playerL.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/image/playerR.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/image/test.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/sound/bgm.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/sound/bgm.wav" afterDir="false" />
+    <list default="true" id="64ac1bab-d835-485f-a65f-75e4072c7a66" name="Changes" comment="배경화면 및 플레이어 캐릭터 이미지 적용">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Moveable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/BubbleFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/BubbleFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Player.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +24,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -50,22 +37,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/nomadhuns/Developer/JavaProjects/bubble",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "onboarding.tips.debug.path": "/Users/nomadhuns/Developer/JavaProjects/bubble/src/main/java/org/example/Main.java",
-    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/nomadhuns/Developer/JavaProjects/bubble&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;/Users/nomadhuns/Developer/JavaProjects/bubble/src/main/java/org/example/Main.java&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -94,11 +81,24 @@
       <workItem from="1686483446719" duration="523000" />
       <workItem from="1686483980424" duration="155000" />
       <workItem from="1686484147389" duration="819000" />
-      <workItem from="1686484983990" duration="2506000" />
+      <workItem from="1686484983990" duration="2546000" />
+      <workItem from="1686487639628" duration="842000" />
     </task>
+    <task id="LOCAL-00001" summary="배경화면 및 플레이어 캐릭터 이미지 적용">
+      <created>1686487622525</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1686487622525</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="배경화면 및 플레이어 캐릭터 이미지 적용" />
+    <option name="LAST_COMMIT_MESSAGE" value="배경화면 및 플레이어 캐릭터 이미지 적용" />
   </component>
 </project>
