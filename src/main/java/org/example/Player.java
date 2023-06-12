@@ -102,7 +102,7 @@ public class Player extends JLabel implements Moveable {
     // left + up, right + up
     @Override
     public void up() {
-        System.out.println("up");
+//        System.out.println("up");
         up = true;
         new Thread(() -> {
             for (int i = 0; i < 130/JUMPSPEED; i++) {
@@ -122,11 +122,11 @@ public class Player extends JLabel implements Moveable {
 
     @Override
     public void down() {
-        System.out.println("down");
+//        System.out.println("down");
         down =true;
 
         new Thread(() -> {
-            for (int i = 0; i < 130/JUMPSPEED; i++) {
+            while (down) {
                 y = y + JUMPSPEED;
                 setLocation(x, y);
                 try {
