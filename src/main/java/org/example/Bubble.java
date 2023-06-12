@@ -6,10 +6,11 @@ import lombok.Setter;
 import javax.swing.*;
 
 @Getter @Setter
-public class Bubble extends JLabel {
+public class Bubble extends JLabel implements Moveable {
 
     // 의존성 컴포지션
     private Player player;
+    private BackgroundBubbleService backgroundBubbleService;
 
     // 위치 상태
     private int x;
@@ -31,6 +32,17 @@ public class Bubble extends JLabel {
         this.player = player;
         initObject();
         initSetting();
+        initThread();
+    }
+
+    private void initThread() {
+        new Thread(() -> {
+            if (player.getPlayerWay() == PlayerWay.LEFT) {
+                left();
+            } else {
+                right();
+            }
+        }).start();
     }
 
     private void initObject() {
@@ -38,6 +50,8 @@ public class Bubble extends JLabel {
         bubble = new ImageIcon(imageLoader.findImageURL("image/bubble.png"));
         bubbled = new ImageIcon(imageLoader.findImageURL("image/bubbled.png"));
         bomb = new ImageIcon(imageLoader.findImageURL("image/bomb.png"));
+
+        backgroundBubbleService = new BackgroundBubbleService(this);
     }
 
     private void initSetting() {
@@ -55,4 +69,56 @@ public class Bubble extends JLabel {
     }
 
 
+    @Override
+    public void left() {
+        left = true;
+        for (int i = 0; i < 400; i++) {
+            x--;
+            setLocation(x, y);
+
+            if (backgroundBubbleService.leftWall()) break;
+
+            try {
+                Thread.sleep(1);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        up();
+    }
+
+    @Override
+    public void right() {
+        right = true;
+        for (int i = 0; i < 400; i++) {
+            x++;
+            setLocation(x, y);
+
+            if (backgroundBubbleService.rightWall()) break;
+
+            try {
+                Thread.sleep(1);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        up();
+    }
+
+    @Override
+    public void up() {
+        up = true;
+        while (up) {
+            y--;
+            setLocation(x, y);
+
+            if (backgroundBubbleService.topWall()) break;
+
+            try {
+                Thread.sleep(1);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
 }

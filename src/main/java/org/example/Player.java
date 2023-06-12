@@ -13,6 +13,9 @@ public class Player extends JLabel implements Moveable {
     private int x;
     private int y;
 
+    // 플레이어의 방향 상태
+    private PlayerWay playerWay;
+
     // 움직임 상태
     private boolean left;
     private boolean right;
@@ -57,6 +60,8 @@ public class Player extends JLabel implements Moveable {
         up = false;
         down = false;
 
+        playerWay = PlayerWay.RIGHT;
+
         leftWallCrash = false;
         rightWallCrash = false;
 
@@ -67,6 +72,7 @@ public class Player extends JLabel implements Moveable {
 
     @Override
     public void left() {
+        this.playerWay = PlayerWay.LEFT;
         this.left = true;
         new Thread(() -> {
             while (left) {
@@ -84,6 +90,7 @@ public class Player extends JLabel implements Moveable {
 
     @Override
     public void right() {
+        this.playerWay = PlayerWay.RIGHT;
         this.right = true;
         new Thread(() -> {
             while (right) {

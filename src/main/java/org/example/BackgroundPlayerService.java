@@ -41,11 +41,11 @@ public class BackgroundPlayerService implements Runnable{
 
             // 왼쪽 오른쪽 이동시 외벽 충돌 확인
             if (leftColor.getRed() == 255 && leftColor.getGreen() == 0 && leftColor.getBlue() == 0) {
-                System.out.println("왼쪽 벽 충돌");
+//                System.out.println("왼쪽 벽 충돌");
                 player.setLeftWallCrash(true);
                 player.setLeft(false);
             } else if (rightColor.getRed() == 255 && rightColor.getGreen() == 0 && rightColor.getBlue() == 0) {
-                System.out.println("오른쪽 벽 충돌");
+//                System.out.println("오른쪽 벽 충돌");
                 player.setRightWallCrash(true);
                 player.setRight(false);
             } else {
