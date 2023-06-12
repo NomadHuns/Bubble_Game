@@ -36,16 +36,33 @@ public class BubbleFrame extends JFrame {
             public void keyPressed(KeyEvent e) {
                 switch (e.getKeyCode()) {
                     case KeyEvent.VK_LEFT:
+                        if (!player.isLeft())
                         player.left();
                         break;
                     case KeyEvent.VK_RIGHT:
+                        if (!player.isRight())
                         player.right();
                         break;
                     case KeyEvent.VK_UP:
+                        if (!player.isUp())
                         player.up();
                         break;
                 }
             }
-        });
+           @Override
+           public void keyReleased(KeyEvent e) {
+               switch (e.getKeyCode()) {
+                   case KeyEvent.VK_LEFT:
+                       player.setLeft(false);
+                       break;
+                   case KeyEvent.VK_RIGHT:
+                       player.setRight(false);
+                       break;
+                   case KeyEvent.VK_UP:
+                       player.setUp(false);
+                       break;
+               }
+           }
+       });
     }
 }
