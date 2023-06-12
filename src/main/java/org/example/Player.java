@@ -19,6 +19,10 @@ public class Player extends JLabel implements Moveable {
     private boolean up;
     private boolean down;
 
+    // 벽에 충돌한 상태
+    private boolean leftWallCrash;
+    private boolean rightWallCrash;
+
     private final int SPEED = 4;
     private final int JUMPSPEED = 2;
 
@@ -27,6 +31,15 @@ public class Player extends JLabel implements Moveable {
     public Player() {
         initObject();
         initSetting();
+        initBackgroundPlayerService();
+    }
+
+    private void initBackgroundPlayerService() {
+        try {
+            new Thread(new BackgroundPlayerService(this)).start();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void initObject() {
@@ -36,13 +49,16 @@ public class Player extends JLabel implements Moveable {
     }
 
     private void initSetting() {
-        x = 55;
+        x = 80;
         y = 535;
 
         left = false;
         right = false;
         up = false;
         down = false;
+
+        leftWallCrash = false;
+        rightWallCrash = false;
 
         this.setIcon(playerR);
         setSize(50, 50);
