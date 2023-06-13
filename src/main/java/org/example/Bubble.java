@@ -11,6 +11,7 @@ public class Bubble extends JLabel implements Moveable {
     // 의존성 컴포지션
     private BubbleFrame mContext;
     private Player player;
+    private Enemy enemy;
     private BackgroundBubbleService backgroundBubbleService;
 
     // 위치 상태
@@ -32,6 +33,7 @@ public class Bubble extends JLabel implements Moveable {
     public Bubble(BubbleFrame mContext) {
         this.mContext = mContext;
         this.player = mContext.getPlayer();
+        this.enemy = mContext.getEnemy();
         initObject();
         initSetting();
     }
@@ -67,7 +69,17 @@ public class Bubble extends JLabel implements Moveable {
             x--;
             setLocation(x, y);
 
-            if (backgroundBubbleService.leftWall()) break;
+            // 벽에 부딫힘
+            if (backgroundBubbleService.leftWall()) {
+                left = false;
+                break;
+            }
+
+            // 적군 물방울 맞음
+            if ((Math.abs(x - enemy.getX()) > 40 && Math.abs(x - enemy.getX()) < 60) && (Math.abs(y - enemy.getY()) > 0 && Math.abs(y - enemy.getY()) < 50)){
+                System.out.println("물방울이 적군과 충돌");
+                attack();
+            }
 
             try {
                 Thread.sleep(1);
@@ -85,7 +97,11 @@ public class Bubble extends JLabel implements Moveable {
             x++;
             setLocation(x, y);
 
-            if (backgroundBubbleService.rightWall()) break;
+            // 벽에 부딫힘
+            if (backgroundBubbleService.rightWall()) {
+                right = false;
+                break;
+            }
 
             try {
                 Thread.sleep(1);
@@ -115,6 +131,12 @@ public class Bubble extends JLabel implements Moveable {
             }
         }
         clearBubble(); // 천장에 버블이 도착하고 나서 3초 후에 메모리에서 소멸
+    }
+
+    @Override
+    public void attack() {
+        state = 1;
+        setIcon(bubbled);
     }
 
     private void clearBubble() {
