@@ -9,4 +9,5 @@ public interface Moveable {
     public abstract void right();
     public abstract void up();
     default public void down() {};
+    default public void attack() {};
 }

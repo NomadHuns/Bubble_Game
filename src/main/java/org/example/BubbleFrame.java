@@ -24,7 +24,7 @@ public class BubbleFrame extends JFrame {
         backgroundMap = new JLabel(new ImageIcon(ImageLoader.getInstance().findImageURL("image/backgroundMap.png")));
         setContentPane(backgroundMap);
 
-        player = new Player();
+        player = new Player(mContext);
         add(player);
     }
 
@@ -53,8 +53,7 @@ public class BubbleFrame extends JFrame {
                         player.up();
                         break;
                     case KeyEvent.VK_SPACE:
-                        Bubble bubble = new Bubble(mContext);
-                        add(bubble);
+                        player.attack();
                         break;
                 }
             }
