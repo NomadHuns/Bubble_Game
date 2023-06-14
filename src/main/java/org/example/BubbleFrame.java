@@ -19,6 +19,7 @@ public class BubbleFrame extends JFrame {
         initObject();
         initListener();
         setVisible(true);
+        new BGM();
     }
 
     private void initObject() {
