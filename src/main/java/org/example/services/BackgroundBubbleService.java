@@ -1,11 +1,12 @@
-package org.example;
+package org.example.services;
+
+import org.example._core.ImageLoader;
+import org.example.components.Bubble;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.IOException;
-import java.net.URISyntaxException;
 
 // 메인 스레드는 키보드 이벤트를 처리하느라 바쁨
 // 백그라운드에서 계속 관찰해야함

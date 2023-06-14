@@ -1,7 +1,11 @@
-package org.example;
+package org.example.components;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.example.*;
+import org.example._core.ImageLoader;
+import org.example.services.BackgroundEnemyService;
+import org.example.states.EnemyWay;
 
 import javax.swing.*;
 

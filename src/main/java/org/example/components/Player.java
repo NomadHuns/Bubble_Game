@@ -1,7 +1,11 @@
-package org.example;
+package org.example.components;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.example.*;
+import org.example._core.ImageLoader;
+import org.example.services.BackgroundPlayerService;
+import org.example.states.PlayerWay;
 
 import javax.swing.*;
 import java.util.ArrayList;

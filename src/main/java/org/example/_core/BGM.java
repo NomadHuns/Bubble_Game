@@ -1,9 +1,7 @@
-package org.example;
+package org.example._core;
 
 import javax.sound.sampled.*;
 import java.io.File;
-import java.io.IOException;
-import java.net.URISyntaxException;
 
 public class BGM {
     public BGM() {

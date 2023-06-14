@@ -2,6 +2,10 @@ package org.example;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.example._core.BGM;
+import org.example._core.ImageLoader;
+import org.example.components.Enemy;
+import org.example.components.Player;
 
 import javax.swing.*;
 import java.awt.event.KeyAdapter;

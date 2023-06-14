@@ -1,4 +1,4 @@
-package org.example;
+package org.example.states;
 
 public enum EnemyWay {
     LEFT, RIGHT;

@@ -1,4 +1,8 @@
-package org.example;
+package org.example.services;
+
+import org.example._core.ImageLoader;
+import org.example.components.Bubble;
+import org.example.components.Player;
 
 import javax.imageio.ImageIO;
 import java.awt.*;

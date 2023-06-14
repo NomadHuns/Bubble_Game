@@ -1,4 +1,4 @@
-package org.example;
+package org.example._core;
 
 import java.net.URL;
 
