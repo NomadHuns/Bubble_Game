@@ -4,11 +4,14 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.swing.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
 public class Player extends JLabel implements Moveable {
     private BubbleFrame mContext;
+    private List<Bubble> bubbleList;
 
     // 위치 상태
     private int x;
@@ -51,6 +54,7 @@ public class Player extends JLabel implements Moveable {
         ImageLoader imageLoader = ImageLoader.getInstance();
         playerR = new ImageIcon(imageLoader.findImageURL("image/playerR.png"));
         playerL = new ImageIcon(imageLoader.findImageURL("image/playerL.png"));
+        bubbleList = new ArrayList<>();
     }
 
     private void initSetting() {
@@ -153,6 +157,7 @@ public class Player extends JLabel implements Moveable {
     public void attack() {
         new Thread(() -> {
             Bubble bubble = new Bubble(mContext);
+            bubbleList.add(bubble);
             mContext.add(bubble);
             if (playerWay == PlayerWay.LEFT) {
                 bubble.left();

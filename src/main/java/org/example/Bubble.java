@@ -12,6 +12,7 @@ public class Bubble extends JLabel implements Moveable {
     private BubbleFrame mContext;
     private Player player;
     private Enemy enemy;
+    private Enemy removeEnemy = null; // 적 제거 변수.
     private BackgroundBubbleService backgroundBubbleService;
 
     // 위치 상태
@@ -77,7 +78,6 @@ public class Bubble extends JLabel implements Moveable {
 
             // 적군 물방울 맞음
             if ((Math.abs(x - enemy.getX()) < 10) && (Math.abs(y - enemy.getY()) > 0 && Math.abs(y - enemy.getY()) < 50)){
-                System.out.println("물방울이 적군과 충돌");
                 if (enemy.getState() == 0){
                     attack();
                     break;
@@ -108,7 +108,6 @@ public class Bubble extends JLabel implements Moveable {
 
             // 적군 물방울 맞음
             if ((Math.abs(x - enemy.getX()) < 10) && (Math.abs(y - enemy.getY()) > 0 && Math.abs(y - enemy.getY()) < 50)){
-                System.out.println("물방울이 적군과 충돌");
                 if (enemy.getState() == 0){
                     attack();
                     break;
@@ -160,6 +159,7 @@ public class Bubble extends JLabel implements Moveable {
         state = 1;
         enemy.setState(1);
         setIcon(bubbled);
+        removeEnemy = enemy;
         mContext.remove(enemy); // 메모리에서 사라지게 한다. (가비지 컬렉션 -> 즉시 사라지지 않는다.)
         mContext.repaint();
     }
@@ -174,5 +174,21 @@ public class Bubble extends JLabel implements Moveable {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void clearBubbled() {
+        new Thread(() -> {
+            try {
+                up = false;
+                setIcon(bomb);
+                Thread.sleep(1000);
+                mContext.getPlayer().getBubbleList().remove(this);
+                mContext.getEnemy().remove(removeEnemy); // 컨텍스트에 enemy 삭제
+                mContext.remove(this);
+                mContext.repaint();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }).start();
     }
 }
