@@ -22,6 +22,9 @@ public class Enemy extends JLabel implements Moveable {
     private boolean up;
     private boolean down;
 
+    // 생존 여부
+    private int state; // 0 : 생존, 1 : 사망
+
     // 적군의 속도
     private final int SPEED = 3;
     private final int JUMPSPEED = 1;
@@ -53,6 +56,8 @@ public class Enemy extends JLabel implements Moveable {
         right = false;
         up = false;
         down = false;
+
+        state = 0;
 
         enemyWay = EnemyWay.RIGHT;
 
